@@ -1,0 +1,34 @@
+/*****************************************************************************/
+// Filename: ifstream.h
+/*****************************************************************************/
+// Description: This class represents an input stream from file
+/*****************************************************************************/
+
+#include <istream>
+#include <string>
+using std::string;
+
+namespace ppcStreams
+{
+	class ifstream : public istream
+	{
+		public:
+			ifstream();
+			ifstream(string filename);
+			virtual ~ifstream();
+
+			bool open(string filename, ios::openmode mode = ios::in);
+			bool is_open();
+			void close();
+			bool eof();
+			bool operator ==(bool val);
+			operator void * () ;
+
+		protected:
+			virtual int  InFunction(const char* format, ...);
+
+
+		private:
+			FILE* _fileHandle;
+	};
+};

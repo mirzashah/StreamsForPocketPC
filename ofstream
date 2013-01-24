@@ -1,0 +1,34 @@
+/*****************************************************************************/
+// Filename: ofstream.h
+/*****************************************************************************/
+// Description: This class represents an output stream to file
+/*****************************************************************************/
+
+#include <ostream>
+#include <string>
+using std::string;
+
+namespace ppcStreams
+{
+	class ofstream : public ostream
+	{
+		public:
+			ofstream();
+			ofstream(string filename);
+			virtual ~ofstream();
+
+			bool open(string filename, ios::openmode mode = ios::out);
+			int eof();
+			bool is_open();
+			void close();
+			bool operator ==(bool val);
+			operator void * () ;
+
+		protected:
+			virtual int  OutFunction(const char* format, ...);
+
+
+		private:
+			FILE* _fileHandle;
+	};
+};
